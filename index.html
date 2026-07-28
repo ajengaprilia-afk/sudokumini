@@ -2,19 +2,20 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini Sudoku</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Sudoku Mini</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       user-select: none;
+      -webkit-user-select: none;
     }
     body {
-      background: #1e1b2e;
+      background: #14121e;
       color: #f3effe;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -22,48 +23,67 @@
       min-height: 100vh;
       overflow: hidden;
     }
-    #game-container {
+    #game-wrapper {
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #28243d;
-      padding: 16px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      background: #201c31;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 15px rgba(138, 99, 210, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
     canvas {
-      border-radius: 8px;
-      background: #fff;
+      border-radius: 12px;
+      background: #ffffff;
       touch-action: none;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
     }
-    .controls {
-      margin-top: 12px;
+    .action-panel {
+      margin-top: 16px;
       display: flex;
-      gap: 10px;
+      gap: 12px;
+      width: 100%;
+      justify-content: space-between;
     }
-    button {
-      padding: 8px 16px;
+    .btn {
+      flex: 1;
+      padding: 10px 16px;
       border: none;
-      border-radius: 8px;
-      background: #8a63d2;
-      color: white;
-      font-weight: bold;
+      border-radius: 10px;
+      background: #7c5295;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       cursor: pointer;
-      transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.2s ease;
     }
-    button:hover {
-      background: #a07ae6;
+    .btn:hover {
+      background: #9364af;
+      transform: translateY(-2px);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .btn-secondary {
+      background: #393252;
+      color: #d0c8ec;
+    }
+    .btn-secondary:hover {
+      background: #4a4269;
     }
   </style>
 </head>
 <body>
 
-  <div id="game-container">
-    <canvas id="gameCanvas" width="480" height="600"></canvas>
-    <div class="controls">
-      <button onclick="resetLevel()">Restart Level</button>
-      <button onclick="toggleAudio()">🔊 Audio On/Off</button>
+  <div id="game-wrapper">
+    <canvas id="gameCanvas" width="480" height="620"></canvas>
+    <div class="action-panel">
+      <button class="btn btn-secondary" onclick="resetLevel()">Restart Level</button>
+      <button class="btn" id="audioToggleBtn" onclick="toggleAudio()">🔊 Audio On</button>
     </div>
   </div>
 
