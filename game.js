@@ -176,7 +176,7 @@ function draw() {
   // Header / Logo & HUD
   ctx.fillStyle = "#4a3e6d";
   ctx.font = "bold 22px sans-serif";
-  ctx.fillText("AJENG MINI SUDOKU", 20, 35);
+  ctx.fillText("MINI SUDOKU", 20, 35);
 
   ctx.font = "14px sans-serif";
   ctx.fillText(`Level: ${currentLevel + 1}`, 20, 65);
